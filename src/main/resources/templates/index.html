@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskManager - Benvenuto</title>
+  <link rel="stylesheet" th:href="@{/css/generale.css}" />
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">TaskManager</div>
+    <div class="nav-right">
+      <a  class="buttonLR" th:href="@{/login}">Login</a>
+      <a class="buttonLR" th:href="@{/register}">Registrati</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>Benvenuto su TaskManager</h1>
+    <p>Organizza i tuoi compiti, collabora con il tuo team e migliora la produttività.</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>TaskManager</title>
+	<link rel="stylesheet" th:href="@{/css/generale.css}" />
+	<style>
+	        
+			.form-container {
+			      max-width: 400px;
+			      margin: 60px auto;
+			      padding: 30px;
+			      background-color: white;
+			      border-radius: 8px;
+			      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+			    }
+
+			    h2 {
+			      text-align: center;
+			      margin-bottom: 20px;
+			    }
+
+			    input[type="text"], input[type="password"] {
+			      width: 100%;
+			      padding: 10px;
+			      margin-top: 8px;
+			      margin-bottom: 16px;
+			      border: 1px solid #ccc;
+			      border-radius: 4px;
+			    }
+
+			    .buttonSubmit {
+			      width: 100%;
+			      padding: 10px;
+			      background-color: #28a745;
+			      color: white;
+			      border: none;
+			      border-radius: 4px;
+			      cursor: pointer;
+			    }
+
+			    .buttonSubmit:hover {
+			      background-color: #218838;
+			    }
+		</style>
+</head>
+
+<body>
+	<header>
+			<nav>
+			  <div class="nav-left">TaskManager</div>
+			  <div><a th:href="@{/home}"><button class="buttonHome"><img class="home-icon" src="/images/home.png"/></button></a></div>
+			  <div class="nav-right">
+				<!--<a th:href="@{/logout}">🚪 Logout</a>-->
+				<div class="user-menu">
+			      <img src="/images/avatar.png" alt="User" class="user-icon" onclick="toggleMenu()" />
+			      <div id="dropdown" class="dropdown-menu hidden">
+					<a th:href="@{/settings}" class="dropdown-item"><button class="buttonMenu">⚙️ Impostazioni</button></a>
+					<div class="dropdown-separator"></div>
+					<a th:href="@{/settings}" class="dropdown-item"><button class="buttonMenu">⚙️ Impostazioni</button></a>
+			        <a th:href="@{/profile}" class="dropdown-item"><button class="buttonMenu">👤 Profilo</button></a>
+					<div class="dropdown-separator"></div>
+					<a th:href="@{/logout}" class="dropdown-item"><button class="buttonMenu">🚪 Logout</button></a>
+			      </div>
+			  </div>
+			</nav>
+			<script th:src="@{/js/menu.js}"></script>
+		</header>
+	<div class="form-container">
+			<h1>Registra nuovo Progetto </h1>
+		
+			<form id = "registerProjectForm" th:action="@{/newProject}" th:object="${project}" method="POST">
+		
+		    <table>
+		        <tr>
+		            <td><label for="nameInput">Nome</label>
+		            <td><input id=nameInput type="text" th:field="*{nome}" required placeholder="Nome"></td>
+		            <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></td>
+		        </tr>
+		        <tr>
+		            <td><label for="nameDescription">Descrizione</label>
+		            <td><input id=nameDescription type="text" th:field="*{description}" placeholder="Descrizione"></td>
+		            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}"  th:style="'color:red'"></td>
+		        </tr>
+		            
+		        <tr>
+		            <td>
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		                <button class="buttonSubmit" type="submit">Registra</button>
+		            </td>
+		        </tr>
+		    </table>
+		
+		</form>
+		</div>
+</body>
+</html>

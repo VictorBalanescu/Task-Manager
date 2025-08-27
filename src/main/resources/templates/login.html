@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - TaskManager</title>
+  <link rel="stylesheet" th:href="@{/css/generale.css}" />
+  <style>
+
+    .form-container {
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">TaskManager</div>
+  <div class="nav-right">
+    <a  class="buttonLR" th:href="@{/}">Home</a>
+    <a class="buttonLR" th:href="@{/register}">Registrati</a>
+  </div>
+</nav>
+
+<div class="form-container">
+  <h2>Login</h2>
+  <div th:if="${param.error}" class="error">Credenziali non valide.</div>
+  <form th:action="@{/login}" method="post">
+    <label>Username</label>
+    <input type="text" name="username" required />
+    <label>Password</label>
+    <input type="password" name="password" required />
+    <button type="submit">Accedi</button>
+  </form>
+</div>
+
+</body>
+</html>

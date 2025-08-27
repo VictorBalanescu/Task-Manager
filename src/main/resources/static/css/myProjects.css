@@ -1,0 +1,40 @@
+.table-container {
+  max-width: 90%;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #28a745;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+.deleteButton{
+  text-decoration: none;
+  color: white;
+  background:#eca1a6;
+  border: 1px solid white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.deleteButton:hover{
+  background:red;
+}

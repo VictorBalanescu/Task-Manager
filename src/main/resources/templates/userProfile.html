@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>TaskManager</title>
+	<link rel="stylesheet" th:href="@{/css/generale.css}" />
+	<link rel="stylesheet" th:href="@{/css/userProfile.css}" />
+</head>
+
+<body>
+	<header>
+			<nav>
+			  <div class="nav-left">TaskManager</div>
+			  <div><a th:href="@{/home}"><button class="buttonHome"><img class="home-icon" src="/images/home.png"/></button></a></div>
+			  <div class="nav-right">
+				<!--<a th:href="@{/logout}">🚪 Logout</a>-->
+				<div class="user-menu">
+			      <img src="/images/avatar.png" alt="User" class="user-icon" onclick="toggleMenu()" />
+			      <div id="dropdown" class="dropdown-menu hidden">
+					<a th:href="@{/settings}" class="dropdown-item"><button class="buttonMenu">⚙️ Impostazioni</button></a>
+					<div class="dropdown-separator"></div>
+					<a th:href="@{/settings}" class="dropdown-item"><button class="buttonMenu">⚙️ Impostazioni</button></a>
+			        <a th:href="@{/profile}" class="dropdown-item"><button class="buttonMenu">👤 Profilo</button></a>
+					<div class="dropdown-separator"></div>
+					<a th:href="@{/logout}" class="dropdown-item"><button class="buttonMenu">🚪 Logout</button></a>
+			      </div>
+			  </div>
+			</nav>
+			<script th:src="@{/js/menu.js}"></script>
+		</header>
+
+	
+	<div class="table-container">
+		<h1>Your Profile</h1>
+    <table>
+        <tr>
+            <td>Username</td>
+              <td th:text="${credentials.username}">...</td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+              <td th:text="${credentials.user.nome}">...</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+              <td th:text="${credentials.user.cognome}">...</td>
+        </tr>
+        <tr>
+            <td>Role</td>
+              <td th:text="${credentials.role}">...</td>
+        </tr>
+        <tr>
+            <td>Data Creation</td>
+			  <td  th:text="${#temporals.format(credentials.creationTimeStamp, 'dd/MM/yyyy HH:mm')}">OK</td>
+	   </tr>
+        <tr>
+            <td>Last Update</td>
+            <td th:text="${#temporals.format(credentials.getUpdateCreationTime, 'dd/MM/yyyy HH:mm')}">...</td>
+        </tr>
+        
+    </table>
+	
+	<button  class="buttonModifica" onclick="apriModal(this)" th:attr="data-id=${credentials.id}, data-nome=${credentials.user.nome}, data-cognome=${credentials.user.cognome}" > Modifica </button>
+    </div>
+	<!-- ✅ MODAL POSIZIONATO ALLA FINE DEL BODY --> 
+	<div id="modalUtente" class="modal">
+	  <div class="modal-content">
+	    <button class="close red-close" onclick="chiudiModal()">&times;</button>
+	    
+	    <div class="contentModal">
+	      <form method="post" th:action="@{/modificaUser}">
+	        <input type="hidden" name="id" id="modal-id">
+
+	        <label class="labelModal">Nome:</label>
+	        <input type="text" name="nome" id="modal-nome"><br>
+
+	        <label class="labelModal">Cognome:</label>
+	        <input type="text" name="cognome" id="modal-cognome"><br>
+
+	        <button class="buttonSalvaModal" type="submit">Salva</button>
+	        <button class="buttonAnullaModal" type="button" onclick="chiudiModal()">Annulla</button>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+
+	  <script th:src="@{/js/userProfile.js}"></script>
+</body>
+</html>

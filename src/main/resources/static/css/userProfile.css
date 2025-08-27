@@ -1,0 +1,119 @@
+.table-container {
+  max-width: 60%;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+th {
+  background-color: #28a745;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+/* Centra il modal */
+.modal {
+  display: none; /* o block per testing */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* sfondo semi-trasparente */
+}
+
+/* Contenuto del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 8% auto; /* 8% dall'alto = circa 2–3cm su schermi standard */
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+}
+
+/* Bottone di chiusura */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  font-size: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* X rossa */
+.red-close {
+	background: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Spaziatura contenuto */
+.contentModal {
+  margin-top: 40px; /* Spazio sotto la X */
+}
+
+
+ 
+
+  input {
+    margin-bottom: 5%;
+	width: 95%;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 4px;
+  }
+  
+  .buttonModifica{
+	width: 20%;
+	padding: 10px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+  
+  .buttonSalvaModal{
+	width: 49%;
+	padding: 2%;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+  .buttonAnullaModal{
+  	width: 49%;
+  	padding: 2%;
+  	background-color: red;
+  	color: white;
+  	border: none;
+  	border-radius: 4px;
+  	cursor: pointer;
+  	font-size: 16px;
+    }
+  
+	
+	
